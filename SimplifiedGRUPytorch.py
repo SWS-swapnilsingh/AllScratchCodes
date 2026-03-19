@@ -1,16 +1,6 @@
 import torch
 import torch.nn as nn
 
-# ── Simplified GRU has only 1 gate ─────────────────────────
-#
-#   Update gate  z_t = sigmoid( Wxz · x_t  +  Whz · h_{t-1} )
-#   New gate     n_t = tanh   ( Wxn · x_t  +  Whn · (r ⊙ h_{t-1}) )  ← simplified: no reset gate
-#   Next hidden  h_t = (1 - z_t) ⊙ h_{t-1}  +  z_t ⊙ n_t
-#
-#   The update gate z decides:
-#     → how much of the OLD hidden state to KEEP   (1 - z)
-#     → how much of the NEW candidate to WRITE     (z)
-# ─────────────────────────────────────────────────────────────────────────
 
 class SimplifiedGRU(nn.Module):
 
